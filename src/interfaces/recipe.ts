@@ -1,9 +1,10 @@
 import { IUser } from "./user";
 
 export interface IRecipe {
-    _id: string;
+    id: string;
     name: string;
     cuisine: string;
+    image: string;
     serving: string;
     prep_time: string;
     total_time: string;

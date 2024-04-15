@@ -42,7 +42,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
     async function deleteRecipe(e: SyntheticEvent) {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete("/api/recipe/" + recipeId, {
+            await axios.delete("/api/recipes/" + recipeId, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             navigate("/recipe");// change destination -------------------------------
@@ -73,7 +73,13 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
             <section className="container mx-auto pt-24 flex justify-center gap-8">
                 <div className="flex flex-wrap justify-center lg:flex-nowrap gap-24">
                     <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 py-2">
-                        <Card key={recipe._id} {...recipe} />
+                        <Card
+                            key={recipe.id}
+                            name={recipe.name}
+                            image={recipe.image}
+                            cuisine={recipe.cuisine}
+                            total_time={recipe.total_time}
+                        />
                         <div className="flex justify-center mt-4">
                             {recipe && user?._id === recipe.user._id && (
                                 <Link to={"/recipe/edit/" + recipeId} className="mr-4">
@@ -106,7 +112,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                     >
                         {carouselRecipes.map((carouselRecipe, index) => (
                             <div
-                                key={carouselRecipe._id}
+                                key={carouselRecipe.id}
                                 className="w-full flex-none"
                                 style={{ minWidth: "100%" }}
                             >
