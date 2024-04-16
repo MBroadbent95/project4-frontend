@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { IRecipe } from "../interfaces/recipe";
 // card classes was in the original code and might be a nice way to style, worth considering
 
-export default function Card({ id, name, cuisine, serving, prep_time, total_time, cal_serv, ingredients, directions_instructions }: IRecipe) {
+export default function Card({ id, name, cuisine, serving, prep_time, total_time, cal_serv, ingredients, directions_instructions, image_url }: IRecipe) {
 
     return (
         <div>
@@ -28,16 +28,18 @@ export default function Card({ id, name, cuisine, serving, prep_time, total_time
                         Calories Per Serving: <span className="font-medium">{cal_serv}</span>
                     </p>
                 </div>
-                <div className="mt-4 pt-2 border-t p-4">
+                {/* <div className="mt-4 pt-2 border-t p-4">
                     <p className="text-xs lg:text-sm text-center">
                         Ingredients: <span className="font-medium">{ingredients}</span>
                     </p>
-                </div>
-                <div className="mt-4 pt-2 border-t p-4">
+                </div> */}
+                {/* <div className="mt-4 pt-2 border-t p-4">
                     <p className="text-xs lg:text-sm text-center">
                         Directions & Instructions: <span className="font-medium">{directions_instructions}</span>
                     </p>
-                </div>
+                </div> */}
+                {image_url && (<img src={image_url} alt={name} className="mx-auto mt-4" style={{ maxWidth: "50%", height: "auto" }} />)}
+
             </Link>
         </div>
     );

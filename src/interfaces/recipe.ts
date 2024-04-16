@@ -11,6 +11,7 @@ export interface IRecipe {
     cal_serv: number;
     ingredients: string;
     directions_instructions: string;
+    image_url: string;
     user_id: number;
     user: IUser;
 }
