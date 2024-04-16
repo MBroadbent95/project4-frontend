@@ -5,12 +5,15 @@ import { IRecipe } from "../interfaces/recipe";
 import axios from "axios";
 import { IUser } from "../interfaces/user";
 import { Link } from "react-router-dom";
+import { IComment } from "../interfaces/comment"
 
 export default function ShowRecipe({ user }: { user: null | IUser }) {
     const [recipe, setRecipe] = useState<IRecipe | null>(null);
     const [current, setCurrent] = useState(0);
     const { recipeId } = useParams<{ recipeId: string }>();
     const navigate = useNavigate();
+    const [comments, setComments] = useState<IComment[]>([]);
+    const [commentContent, setCommentContent] = useState("");
 
     useEffect(() => {
         async function fetchRecipe() {
@@ -38,6 +41,45 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
         }
     }
 
+    useEffect(() => {
+        async function fetchComments() {
+            try {
+                const response = await axios.get(`/api/recipes/${recipeId}/comments`);
+                setComments(response.data);
+            } catch (error) {
+                console.error('Error fetching comments:', error)
+            }
+        }
+        fetchComments();
+    }, [recipeId]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const token = localStorage.getItem("token");
+            const response = await axios.post(
+                `/api/recipes/${recipeId}/comments`, { content: commentContent },
+                { headers: { Authorization: `Bearer ${token}` }, }
+            );
+            setComments([...comments, response.data]);
+            setCommentContent("");
+
+        } catch (error) {
+            console.error("Error posting comment:", error)
+        }
+    }
+
+    const deleteComment = async (commentId: number) => {
+        try {
+            const token = localStorage.getItem("token");
+            await axios.delete(`/api/comments/${commentId}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setComments(comments.filter(comment => comment.id !== commentId));
+        } catch (error) {
+            console.error("Error deleting comment:", error);
+        }
+    }
 
     if (!recipe) {
         return (
@@ -46,8 +88,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
             </div>
         );
     }
-    console.log("below me should be a github")
-    console.log(recipe.image_url)
+    console.log(`the current front end user is ${user?.id}`)
     return (
         <>
             <section className="container mx-auto max-w-7xl pt-24 flex justify-center gap-8">
@@ -89,14 +130,14 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
 
                         </div>
                         <div className="flex justify-center mt-4">
-                            {recipe && user?._id === recipe.user._id && (
+                            {recipe && user?.id === recipe.user.id && (
                                 <Link to={"/recipe/edit/" + recipeId} className="mr-4">
                                     <button className="bg-blue-500 text-white px-10 py-2 rounded-full hover:bg-blue-400 text-sm">
                                         Edit Recipe
                                     </button>
                                 </Link>
                             )}
-                            {recipe && (user?._id === recipe.user._id || user?.isAdmin) && (
+                            {recipe && (user?.id === recipe.user.id || user?.isAdmin) && (
                                 <button
                                     onClick={deleteRecipe}
                                     className="bg-red-500 text-white px-10 py-2 rounded-full hover:bg-red-400 text-sm"
@@ -105,6 +146,38 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                                 </button>
                             )}
                         </div>
+                        {comments && (
+                            <div className="mt-6">
+                                <h4 className="text-lg font-semibold mb-2">Comments</h4>
+                                <ul>
+                                    {comments.map(comment => (
+                                        <div>
+                                            <li key={comment.id}>{comment.content}</li>
+                                            <li>Posted at {comment.created_at.substring(0, 10)}</li>
+                                            {user && comment.user && user.id === comment.user.id && (
+                                                <button onClick={() => deleteComment(comment.id)}>Delete</button>
+                                            )}
+                                        </div>
+                                    ))}
+                                </ul>
+                                <form onSubmit={handleSubmit}>
+                                    <textarea
+                                        value={commentContent}
+                                        onChange={e => setCommentContent(e.target.value)}
+                                        rows={4}
+                                        placeholder="Write your comment..."
+                                        className="block w-full mt-4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        required
+                                    ></textarea>
+                                    <button
+                                        type="submit"
+                                        className="inline-flex items-center px-4 py-2 mt-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    >
+                                        Post Comment
+                                    </button>
+                                </form>
+                            </div>
+                        )}
                     </div>
 
                 </div>
