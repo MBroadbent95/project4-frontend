@@ -155,7 +155,9 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                                     {comments.map(comment => (
                                         <div>
                                             <li key={comment.id}>{comment.content}</li>
-                                            <li>Posted at {comment.created_at.substring(0, 10)}</li>
+                                            {comment.created_at && (
+                                                <li key={comment.created_at}>Posted at {comment.created_at.substring(0, 10)}</li>
+                                            )}
                                             {user?.id === comment.user_id && (
                                                 <button onClick={(e) => deleteComment(comment.id, e)}>Delete</button>
                                             )}

@@ -2,10 +2,25 @@ import { SyntheticEvent, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "../interfaces/user";
+import { number } from "yargs";
 
-export default function CreateRecipe({ user }: { user: IUser }) {
+interface FormData {
+    name: string;
+    cuisine: string;
+    serving: string;
+    prep_time: string;
+    total_time: string;
+    cal_serv: string;
+    ingredients: string;
+    directions_instructions: string;
+    image_url: string;
+    user_id: number | undefined
+
+}
+
+export default function CreateRecipe({ user }: { user: IUser | null }) {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: "",
         cuisine: "",
         serving: "",
@@ -15,7 +30,8 @@ export default function CreateRecipe({ user }: { user: IUser }) {
         ingredients: "",
         directions_instructions: "",
         image_url: "",
-        user_id: user.id
+        user_id: user?.id
+
     });
 
     const [errorData, setErrorData] = useState({
@@ -30,12 +46,12 @@ export default function CreateRecipe({ user }: { user: IUser }) {
         image_url: ""
     });
 
-    const [recipeCharCount, setRecipeCharCount] = useState(0);
-    const [headingCharCount, setHeadingCharCount] = useState(0);
+    // const [recipeCharCount, setRecipeCharCount] = useState(0);
+    // const [headingCharCount, setHeadingCharCount] = useState(0);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const fieldName = e.target.name;
-        const newFormData = structuredClone(formData);
+        const newFormData = structuredClone(formData) as any;
         const newErrorData = structuredClone(errorData);
         newFormData[fieldName as keyof typeof formData] = e.target.value;
         newErrorData[fieldName as keyof typeof errorData] = "";
@@ -49,7 +65,12 @@ export default function CreateRecipe({ user }: { user: IUser }) {
         try {
             const token = localStorage.getItem("token");
             if (token) {
-                const resp = await axios.post("/api/recipes", formData, {
+                // Include user_id directly in the form data
+                const formDataWithUserId = {
+                    ...formData,
+                    user_id: user?.id
+                };
+                const resp = await axios.post("/api/recipes", formDataWithUserId, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(resp.data);
@@ -69,7 +90,7 @@ export default function CreateRecipe({ user }: { user: IUser }) {
                 textAreaRef.current.scrollHeight + "px";
         }
     }, [formData.directions_instructions]);
-    console.log(`the current front end user is ${user.id}`)
+    console.log(`the current front end user is`, user?.id)
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
             <div className="bg-white shadow-md rounded px-8 py-6 w-96">
@@ -267,7 +288,7 @@ export default function CreateRecipe({ user }: { user: IUser }) {
                             )}
                         </div>
                     </div>
-                    <input type="hidden" name="user_id" value={formData.user_id} />
+                    <input type="hidden" name="user_id" value={user?.id} />
                     <div className="flex justify-center">
                         <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300">
                             Submit
