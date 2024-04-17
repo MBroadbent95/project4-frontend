@@ -1,8 +1,9 @@
 import { SyntheticEvent, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// You have commented out character counts, the code is there should you want it. You still need to change handlesubmit destination.
-export default function CreateRecipe() {
+import { IUser } from "../interfaces/user";
+
+export default function CreateRecipe({ user }: { user: IUser }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
@@ -13,6 +14,8 @@ export default function CreateRecipe() {
         cal_serv: "",
         ingredients: "",
         directions_instructions: "",
+        image_url: "",
+        user_id: user.id
     });
 
     const [errorData, setErrorData] = useState({
@@ -24,12 +27,13 @@ export default function CreateRecipe() {
         cal_serv: "",
         ingredients: "",
         directions_instructions: "",
+        image_url: ""
     });
 
-    // const [recipeCharCount, setRecipeCharCount] = useState(0);
-    // const [headingCharCount, setHeadingCharCount] = useState(0);
+    const [recipeCharCount, setRecipeCharCount] = useState(0);
+    const [headingCharCount, setHeadingCharCount] = useState(0);
 
-    function handleChange(e: any) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const fieldName = e.target.name;
         const newFormData = structuredClone(formData);
         const newErrorData = structuredClone(errorData);
@@ -37,13 +41,8 @@ export default function CreateRecipe() {
         newErrorData[fieldName as keyof typeof errorData] = "";
         setFormData(newFormData);
         setErrorData(newErrorData);
-        // if (e.target.id === "heading") {
-        //     setHeadingCharCount(e.target.value.length);
-        // }
-        // if (e.target.id === "recipe") {
-        //     setRecipeCharCount(e.target.value.length);
-        // }
     }
+
 
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
@@ -54,7 +53,7 @@ export default function CreateRecipe() {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(resp.data);
-                navigate("/recipe"); //edit to match recipe list destination
+                navigate("/recipe");
             }
         } catch (e: any) {
             setErrorData(e.response.data.errors);
@@ -70,7 +69,7 @@ export default function CreateRecipe() {
                 textAreaRef.current.scrollHeight + "px";
         }
     }, [formData.directions_instructions]);
-
+    console.log(`the current front end user is ${user.id}`)
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
             <div className="bg-white shadow-md rounded px-8 py-6 w-96">
@@ -246,55 +245,30 @@ export default function CreateRecipe() {
                             )}
                         </div>
                     </div>
-
-                    {/* <div>
+                    <div>
                         <label
-                            htmlFor="heading"
+                            htmlFor="image_url"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            {`Heading (${headingCharCount}/15)`}
+                            Image
                         </label>
                         <div>
                             <input
                                 type="text"
-                                name={"heading"}
-                                id={"heading"}
-                                maxLength={15}
+                                name={"image_url"}
+                                id={"image_url"}
                                 onChange={handleChange}
-                                value={formData.heading}
+                                placeholder="Please paste a valid Imgur url"
+                                value={formData.image_url}
                                 className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
-                            {errorData.heading && (
-                                <small className="text-red-500">{errorData.heading}</small>
+                            {errorData.image_url && (
+                                <small className="text-red-500">{errorData.directions_instructions}</small>
                             )}
                         </div>
-                    </div> */}
-                    {/* <div>
-                        <label
-                            htmlFor="tip"
-                            className="block text-sm font-medium text-gray-700"
-                        >
-                            {`Your Advice (${adviceCharCount}/200)`}
-                        </label>
-                        <div>
-                            <textarea
-                                ref={textAreaRef}
-                                name={"tip"}
-                                id={"tip"}
-                                maxLength={200}
-                                onChange={handleChange}
-                                value={formData.tip}
-                                className="hide-scrollbar resize-none mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 h-32"
-                            />
-                            {errorData.tip && (
-                                <small className="text-red-500">{errorData.tip}</small>
-                            )}
-                        </div>
-                    </div> */}
+                    </div>
+                    <input type="hidden" name="user_id" value={formData.user_id} />
                     <div className="flex justify-center">
-                        {/* {errorData.misc && (
-                            <small className="text-red-500">{errorData.misc}</small>
-                        )} */}
                         <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300">
                             Submit
                         </button>

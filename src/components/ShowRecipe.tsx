@@ -69,7 +69,8 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
         }
     }
 
-    const deleteComment = async (commentId: number) => {
+    const deleteComment = async (commentId: number, e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         try {
             const token = localStorage.getItem("token");
             await axios.delete(`/api/comments/${commentId}`, {
@@ -89,6 +90,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
         );
     }
     console.log(`the current front end user is ${user?.id}`)
+    // console.log(`the comment data is ${comments[0].user_id}`)
     return (
         <>
             <section className="container mx-auto max-w-7xl pt-24 flex justify-center gap-8">
@@ -154,8 +156,8 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                                         <div>
                                             <li key={comment.id}>{comment.content}</li>
                                             <li>Posted at {comment.created_at.substring(0, 10)}</li>
-                                            {user && comment.user && user.id === comment.user.id && (
-                                                <button onClick={() => deleteComment(comment.id)}>Delete</button>
+                                            {user?.id === comment.user_id && (
+                                                <button onClick={(e) => deleteComment(comment.id, e)}>Delete</button>
                                             )}
                                         </div>
                                     ))}
@@ -169,12 +171,16 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                                         className="block w-full mt-4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                         required
                                     ></textarea>
-                                    <button
-                                        type="submit"
-                                        className="inline-flex items-center px-4 py-2 mt-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                    >
-                                        Post Comment
-                                    </button>
+                                    {user ? (
+                                        <button
+                                            type="submit"
+                                            className="inline-flex items-center px-4 py-2 mt-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        >
+                                            Post Comment
+                                        </button>
+                                    ) : (
+                                        <p className="mt-2 text-gray-600">You must be logged in to post a comment</p>
+                                    )}
                                 </form>
                             </div>
                         )}
