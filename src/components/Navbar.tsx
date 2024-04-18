@@ -78,13 +78,15 @@ function Navbar({ user, setUser }: NavbarProps) {
                         {" "}
                         {user ? (
 
-                            <button
-                                onClick={logout}
-                                className="bg-red-500 text-white text-xs lg:text-base px-5 py-2 rounded-full hover:bg-red-400 ml-4"
-                            >
-                                Log Out
-                            </button>
-
+                            <>
+                                <p className="text-sm lg:text-base text-gray-600 mr-4">Logged in as {user.username}</p>
+                                <button
+                                    onClick={logout}
+                                    className="bg-red-500 text-white text-xs lg:text-base px-5 py-2 rounded-full hover:bg-red-400"
+                                >
+                                    Log Out
+                                </button>
+                            </>
                         ) : (
                             <button className="bg-red-500 text-white px-5 py-2 rounded-full hover:bg-red-400">
                                 <Link to="/login">Login</Link>
