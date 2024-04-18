@@ -23,24 +23,24 @@ export default function Home() {
 
     const steps = [
         {
-            title: "Explore Insights",
+            title: "Explore Recipes",
             description:
-                "Browse through a curated collection of wisdom and experiences. Find nuggets of knowledge that can propel you forward in your bootcamp journey.",
+                "Begin your culinary journey by following the link in the above Navbar. Have a look around and see if any tickle your fancy.",
         },
         {
-            title: "Join the Community",
+            title: "Join the Foodies",
             description:
-                "Sign up and create your own unique account. Join our vibrant community of bootcamp enthusiasts!",
+                "Sign up and create your own unique account.",
         },
         {
-            title: "Share and Empower",
+            title: "Share the Sauce",
             description:
-                "Log in to unlock the power of sharing. Your insights can be the beacon for someone elses journey!",
+                "Log in to unlock the power of sharing. You could be sharing someones new favourite meal!",
         },
         {
-            title: "Craft Your Advice",
+            title: "Tuck In and Share your Experience",
             description:
-                "Start creating and sharing your advice. Your wisdom is a gift - wrap it up for others to unwrap!",
+                "Don't keep it to yourself, if you tried another foodie's recipe, let them know by adding a comment!",
         },
     ];
 
@@ -54,44 +54,38 @@ export default function Home() {
 
     return (
         <>
-            <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+            <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10 bg-gray-200">
                 <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 lg:space-x-10 max-w-6xl mx-auto m-5">
                     <div className="text-center lg:text-left space-y-4 max-w-xl p-4">
                         <h1 className="text-4xl font-bold text-gray-900">
-                            Welcome to <span className="text-red-600">Tasteful Trove!</span>
+                            Welcome to <span className="text-indigo-600">Tasteful Trove!</span>
                         </h1>
                         <p className="text-gray-700">
-                            This full-stack application was made by Michael, Conor and
-                            Catherine as part of General Assembly's Software Engineering
-                            Immersive Bootcamp. We built our own backend and frontend using
-                            Express, Mongoose, MongoDB, and React.
+                            Welcome to Tasteful Trove, your culinary haven for exploring, discovering, and sharing delectable recipes! At Tasteful Trove, we invite you to embark on a gastronomic journey where every dish tells a story and every bite tantalizes the taste buds. Whether you're an aspiring chef, a seasoned home cook, or simply a lover of good food, our platform offers a treasure trove of recipes waiting to be uncovered. From savory classics to innovative creations, our diverse collection spans cuisines from around the globe and encompasses a wide range of meal types.
                         </p>
                         <p className="text-gray-700">
-                            We wanted to create a space for General Assembly students past and
-                            present to share advice on getting the most out of their courses
-                            and bootcamps. Anyone is welcome to view the advice other students
-                            have contributed, and if you would like to share a tip or two of
-                            your own, then you will need to{" "}
+                            Dive into a world of culinary delights, where you can not only browse and search for your favorite recipes but also contribute your own culinary masterpieces. Create your profile, upload recipes complete with mouthwatering images, and organize them by cuisine or meal type.
+                            {" "}
                             <Link
                                 to="/signup"
-                                className="text-red-600 font-bold hover:underline"
+                                className="text-indigo-600 font-bold hover:underline"
                             >
-                                sign up here
+                                Join our vibrant community
                             </Link>
-                            .
+                            {" "} of food enthusiasts, exchange tips and tricks, and leave reviews to help fellow foodies discover their next culinary masterpiece. Welcome to Tasteful Trove – where every recipe is a culinary adventure waiting to be savored!
                         </p>
                         <p className="text-gray-700 italic">
-                            Thanks for visiting! - Michael, Conor, and Catherine (SEB-78)
+                            Have fun browsing - Michael (SEB-78)
                         </p>
                     </div>
 
                     <div className="w-full max-w-2xl">
                         <h3 className="text-2xl font-semibold text-center mb-6">
-                            How to Get Started
+                            Getting Started...
                         </h3>
                         <ol className="space-y-4">
                             {steps.map((step, index) => (
-                                <li key={index} className="border-l-4 border-red-500 pl-4 py-2">
+                                <li key={index} className="border-l-4 border-indigo-600 pl-4 py-2">
                                     <h4 className="text-lg font-semibold">{step.title}</h4>
                                     <p>{step.description}</p>
                                 </li>
@@ -99,14 +93,14 @@ export default function Home() {
                         </ol>
                     </div>
                 </div>
-                <div className="overflow-hidden relative w-full max-w-2xl pt-10 ">
+                <div className="overflow-hidden relative w-full max-w-2xl pt-10 border-t border-gray-400 ">
                     <div
                         className="flex transition-transform ease-linear duration-700"
                         style={{ transform: `translateX(-${current * 100}%)` }}
                     >
                         {recipes.map((recipe, index) => (
                             <div
-                                key={recipe._id}
+                                key={recipe.id}
                                 className="w-full flex-none"
                                 style={{ minWidth: "100%" }}
                             >

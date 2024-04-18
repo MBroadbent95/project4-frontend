@@ -35,7 +35,7 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar user={user} setUser={setUser} />
-        <div className="flex-grow">
+        <div className="flex-grow bg-gray-200">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/recipe" element={<RecipeList />} />

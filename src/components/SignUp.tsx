@@ -53,7 +53,7 @@ export default function Signup() {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
             <div className="bg-white shadow-md rounded px-8 py-6 w-96">
-                <h2 className="text-xl font-bold mb-4 text-center text-red-500">
+                <h2 className="text-xl font-bold mb-4 text-center text-indigo-600">
                     Sign Up
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -145,7 +145,7 @@ export default function Signup() {
                     </div>
 
                     <div className="flex justify-center">
-                        <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300">
+                        <button className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-400 focus:outline-none focus:ring focus:border-indigo-300">
                             Submit
                         </button>
                     </div>

@@ -15,6 +15,7 @@ export default function EditRecipe() {
         cal_serv: "",
         ingredients: "",
         directions_instructions: "",
+        image_url: ""
     });
 
     // const [adviceCharCount, setAdviceCharCount] = useState(0);
@@ -34,6 +35,7 @@ export default function EditRecipe() {
                 cal_serv: recipeData.cal_serv,
                 ingredients: recipeData.ingredients,
                 directions_instructions: recipeData.directions_instructions,
+                image_url: recipeData.image_url
             };
             setFormData(recipeToEdit);
             // setAdviceCharCount(tipData.tip.length);
@@ -86,7 +88,7 @@ export default function EditRecipe() {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
             <div className="bg-white shadow-md rounded px-8 py-6 w-96">
-                <h2 className="text-xl font-bold mb-4 text-center text-red-500">
+                <h2 className="text-xl font-bold mb-4 text-center text-indigo-600">
                     Edit Your Recipe
                 </h2>
                 {errorMessage && (
@@ -243,8 +245,27 @@ export default function EditRecipe() {
 
                         </div>
                     </div>
+                    <div>
+                        <label
+                            htmlFor="image_url"
+                            className="block text-sm font-medium text-gray-700"
+                        >
+                            Image URL
+                        </label>
+                        <div>
+                            <input
+                                type="text"
+                                name={"image_url"}
+                                id={"image_url"}
+                                onChange={handleChange}
+                                value={formData.image_url}
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                            />
+
+                        </div>
+                    </div>
                     <div className="flex justify-center">
-                        <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300">
+                        <button className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-400 focus:outline-none focus:ring focus:border-indigo-300">
                             Save
                         </button>
                     </div>

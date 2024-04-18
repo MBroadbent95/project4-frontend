@@ -32,13 +32,13 @@ function Navbar({ user, setUser }: NavbarProps) {
     console.log("User prop in Navbar:", user);
     return (
         <>
-            <header className="bg-white shadow-md py-2">
-                <nav className="flex justify-between items-center w-[92%] mx-auto pb-8">
+            <header className="bg-white shadow-md py-2 border-b border-gray-400">
+                <nav className="flex justify-between items-center w-[92%] mx-auto pb-4">
                     <div className="flex items-center">
                         <img
                             className="w-16 mt-2 mr-4"
-                            src="../src/assets/bbtransparentbg.png"
-                            alt="Bootcamp Buddy Logo"
+                            src="../src/assets/ttlogo.png"
+                            alt="Tasteful Trove Logo"
                         />
                         <div
                         // className={`${isMenuOpen ? "block" : "hidden"
@@ -48,7 +48,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                                 <li>
                                     <Link
                                         to="/"
-                                        className="hover:text-red-500 text-xs lg:text-base"
+                                        className="hover:text-indigo-400 text-xs lg:text-base text-indigo-600"
                                     >
                                         Home
                                     </Link>
@@ -56,7 +56,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                                 <li>
                                     <Link
                                         to="/recipe"
-                                        className="hover:text-red-500 text-xs lg:text-base"
+                                        className="hover:text-indigo-400 text-xs lg:text-base text-indigo-600"
                                     >
                                         Explore Recipes
                                     </Link>
@@ -64,8 +64,8 @@ function Navbar({ user, setUser }: NavbarProps) {
                                 {user && (
                                     <li>
                                         <Link
-                                            to="/share-recipe"// change to post recipe
-                                            className="hover:text-red-500 text-xs lg:text-base"
+                                            to="/share-recipe"
+                                            className="hover:text-indigo-400 text-xs lg:text-base text-indigo-600"
                                         >
                                             Submit a Recipe
                                         </Link>
@@ -79,16 +79,16 @@ function Navbar({ user, setUser }: NavbarProps) {
                         {user ? (
 
                             <>
-                                <p className="text-sm lg:text-base text-gray-600 mr-4">Logged in as {user.username}</p>
+                                <p className="text-xs lg:text-base text-gray-600 mr-4">Logged in as {user.username}</p>
                                 <button
                                     onClick={logout}
-                                    className="bg-red-500 text-white text-xs lg:text-base px-5 py-2 rounded-full hover:bg-red-400"
+                                    className="bg-indigo-600 text-white text-xs lg:text-base px-5 py-2 rounded-full hover:bg-indigo-400"
                                 >
                                     Log Out
                                 </button>
                             </>
                         ) : (
-                            <button className="bg-red-500 text-white px-5 py-2 rounded-full hover:bg-red-400">
+                            <button className="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-400">
                                 <Link to="/login">Login</Link>
                             </button>
                         )}

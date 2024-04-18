@@ -19,7 +19,7 @@ function RecipesList() {
         fetchRecipes();
     }, []);
 
-    console.log("Here are all the tips we have fetched:");
+    console.log("Here are all the recipes we have fetched:");
     console.log(recipes);
 
 
@@ -43,13 +43,14 @@ function RecipesList() {
 
     // TODO: Add Tailwind/CSS to this
     return (
-        <section>
-            <div className="container mx-auto">
+        <section className="">
+
+            <div className="container mx-auto ">
                 <div className="flex justify-center mt-8 ">
                     <input
                         id="searchBar"
                         className="px-4 py-2 border border-gray-300 rounded-md w-full md:w-96"
-                        placeholder="Search for Advice"
+                        placeholder="Search for ...Thai?"
                         onChange={handleChange}
                         value={search}
                     />
@@ -62,14 +63,15 @@ function RecipesList() {
                     <div className="flex flex-wrap -mx-2 p-4">
                         {filterResults()?.map((recipe) => {
                             return (
-                                <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 py-2">
-                                    <Card key={recipe._id} {...recipe} />
+                                <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 py-2 hover:shadow-lg">
+                                    <Card key={recipe.id} {...recipe} />
                                 </div>
                             );
                         })}
                     </div>
                 )}
             </div>
+
         </section>
     );
 }

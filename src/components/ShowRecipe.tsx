@@ -134,7 +134,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                         <div className="flex justify-center mt-4">
                             {recipe && user?.id === recipe.user.id && (
                                 <Link to={"/recipe/edit/" + recipeId} className="mr-4">
-                                    <button className="bg-blue-500 text-white px-10 py-2 rounded-full hover:bg-blue-400 text-sm">
+                                    <button className="bg-blue-500 text-white px-10 py-2 rounded-lg hover:bg-blue-400 text-sm">
                                         Edit Recipe
                                     </button>
                                 </Link>
@@ -142,7 +142,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                             {recipe && (user?.id === recipe.user.id || user?.isAdmin) && (
                                 <button
                                     onClick={deleteRecipe}
-                                    className="bg-red-500 text-white px-10 py-2 rounded-full hover:bg-red-400 text-sm"
+                                    className="bg-red-500 text-white px-10 py-2 rounded-lg hover:bg-red-400 text-sm"
                                 >
                                     Delete Recipe
                                 </button>
@@ -153,13 +153,13 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
                                 <h4 className="text-lg font-semibold mb-2">Comments</h4>
                                 <ul>
                                     {comments.map(comment => (
-                                        <div>
-                                            <li key={comment.id}>{comment.content}</li>
+                                        <div className="block w-full mt-4 border-gray-300 rounded-md shadow-sm bg-white ">
+                                            <li className="font-semibold" key={comment.id}>{comment.content}</li>
                                             {comment.created_at && (
-                                                <li key={comment.created_at}>Posted at {comment.created_at.substring(0, 10)}</li>
+                                                <li className="text-xs" key={comment.created_at}>Posted on {comment.created_at.substring(0, 10)}</li>
                                             )}
                                             {user?.id === comment.user_id && (
-                                                <button onClick={(e) => deleteComment(comment.id, e)}>Delete</button>
+                                                <button className="text-xs hover:text-red-500" onClick={(e) => deleteComment(comment.id, e)}>Delete Comment?</button>
                                             )}
                                         </div>
                                     ))}

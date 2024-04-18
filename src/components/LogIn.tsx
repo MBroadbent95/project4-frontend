@@ -38,7 +38,7 @@ export default function Login({ fetchUser }: { fetchUser: Function }) {
         <div className="flex justify-center items-center min-h-screen bg-gray-100 pd-6">
             <div className="flex flex-col items-center">
                 <div className="bg-white shadow-md rounded px-8 py-6 w-96">
-                    <h2 className="text-xl font-bold mb-4 text-center text-red-500">
+                    <h2 className="text-xl font-bold mb-4 text-center text-indigo-600">
                         Login
                     </h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
@@ -82,7 +82,7 @@ export default function Login({ fetchUser }: { fetchUser: Function }) {
                             </div>
                         </div>
                         <div className="flex justify-center">
-                            <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300">
+                            <button className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-400 focus:outline-none focus:ring focus:border-indigo-300">
                                 Submit
                             </button>
                         </div>
@@ -93,7 +93,7 @@ export default function Login({ fetchUser }: { fetchUser: Function }) {
                         <span className="text-gray-700">Don't have an account?</span>{" "}
                         <Link
                             to="/signup"
-                            className="text-red-500 hover:text-red-400 font-bold"
+                            className="text-indigo-600 hover:text-red-400 font-bold"
                         >
                             Sign up
                         </Link>
