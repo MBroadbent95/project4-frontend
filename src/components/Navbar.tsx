@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { IUser } from "../interfaces/user";
+import ttlogo from "../assets/ttlogo.png"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 // import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -37,7 +38,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                     <div className="flex items-center">
                         <img
                             className="w-16 mt-2 mr-4"
-                            src="../src/assets/ttlogo.png"
+                            src={ttlogo}
                             alt="Tasteful Trove Logo"
                         />
                         <div
