@@ -10,6 +10,7 @@ import Login from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import ShowRecipe from "./components/ShowRecipe";
 import EditRecipe from "./components/EditRecipe";
+import { baseUrl } from "./config";
 // import UserAccountInfo from "./components/UserAccountInfo";
 import "./styles/index.css";
 // import UserProfile from "./components/UserProfile";
@@ -20,7 +21,7 @@ function App() {
   async function fetchUser() {
     const token = localStorage.getItem("token");
     if (token) {
-      const resp = await axios.get("/api/user", {
+      const resp = await axios.get(`${baseUrl}/user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(resp.data);

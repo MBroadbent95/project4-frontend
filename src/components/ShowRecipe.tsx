@@ -6,6 +6,7 @@ import axios from "axios";
 import { IUser } from "../interfaces/user";
 import { Link } from "react-router-dom";
 import { IComment } from "../interfaces/comment"
+import { baseUrl } from "../config";
 
 export default function ShowRecipe({ user }: { user: null | IUser }) {
     const [recipe, setRecipe] = useState<IRecipe | null>(null);
@@ -18,7 +19,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
     useEffect(() => {
         async function fetchRecipe() {
             try {
-                const response = await fetch(`/api/recipes/${recipeId}`);
+                const response = await fetch(`${baseUrl}/recipes/${recipeId}`);
                 const data: IRecipe = await response.json();
                 setRecipe(data);
             } catch (error) {
@@ -32,7 +33,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
     async function deleteRecipe(e: SyntheticEvent) {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete("/api/recipes/" + recipeId, {
+            await axios.delete(`${baseUrl}/recipes/` + recipeId, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             navigate("/recipe");// change destination -------------------------------
@@ -44,7 +45,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
     useEffect(() => {
         async function fetchComments() {
             try {
-                const response = await axios.get(`/api/recipes/${recipeId}/comments`);
+                const response = await axios.get(`${baseUrl}/recipes/${recipeId}/comments`);
                 setComments(response.data);
             } catch (error) {
                 console.error('Error fetching comments:', error)
@@ -58,7 +59,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
         try {
             const token = localStorage.getItem("token");
             const response = await axios.post(
-                `/api/recipes/${recipeId}/comments`, { content: commentContent },
+                `${baseUrl}/recipes/${recipeId}/comments`, { content: commentContent },
                 { headers: { Authorization: `Bearer ${token}` }, }
             );
             setComments([...comments, response.data]);
@@ -73,7 +74,7 @@ export default function ShowRecipe({ user }: { user: null | IUser }) {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`/api/comments/${commentId}`, {
+            await axios.delete(`${baseUrl}/comments/${commentId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setComments(comments.filter(comment => comment.id !== commentId));

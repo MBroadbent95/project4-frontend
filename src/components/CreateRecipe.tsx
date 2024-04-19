@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "../interfaces/user";
 import { number } from "yargs";
+import { baseUrl } from "../config"
 
 interface FormData {
     name: string;
@@ -70,7 +71,7 @@ export default function CreateRecipe({ user }: { user: IUser | null }) {
                     ...formData,
                     user_id: user?.id
                 };
-                const resp = await axios.post("/api/recipes", formDataWithUserId, {
+                const resp = await axios.post(`${baseUrl}/recipes`, formDataWithUserId, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(resp.data);

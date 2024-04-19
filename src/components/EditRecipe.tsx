@@ -2,6 +2,7 @@ import { SyntheticEvent, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { IRecipe } from "../interfaces/recipe";
+import { baseUrl } from "../config"
 
 export default function EditRecipe() {
     const { recipeId } = useParams();
@@ -24,7 +25,7 @@ export default function EditRecipe() {
 
     useEffect(() => {
         async function fetchRecipe() {
-            const resp = await fetch(`/api/recipes/${recipeId}`);
+            const resp = await fetch(`${baseUrl}/recipes/${recipeId}`);
             const recipeData = await resp.json();
             const recipeToEdit = {
                 name: recipeData.name,
@@ -61,7 +62,7 @@ export default function EditRecipe() {
         e.preventDefault();
         const token = localStorage.getItem("token");
         try {
-            const resp = await axios.put(`/api/recipes/${recipeId}`, formData, {
+            const resp = await axios.put(`${baseUrl}/recipes/${recipeId}`, formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             console.log(resp.data);

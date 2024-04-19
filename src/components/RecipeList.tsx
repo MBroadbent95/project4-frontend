@@ -2,6 +2,7 @@ import React from "react";
 import { IRecipe } from "../interfaces/recipe";
 import Card from "./Recipe";
 import { react } from "@babel/types";
+import { baseUrl } from "../config";
 
 type Tips = null | Array<IRecipe>;
 
@@ -12,7 +13,7 @@ function RecipesList() {
 
     React.useEffect(() => {
         async function fetchRecipes() {
-            const resp = await fetch("/api/recipes");
+            const resp = await fetch(`${baseUrl}/recipes`);
             const data = await resp.json();
             setRecipes(data);
         }

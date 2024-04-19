@@ -3,6 +3,7 @@ import Card from "../components/Recipe";
 import { IRecipe } from "../interfaces/recipe";
 import { ChevronLeft, ChevronRight } from "react-feather";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../config"
 
 export default function Home() {
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
@@ -11,7 +12,7 @@ export default function Home() {
     useEffect(() => {
         async function fetchRecipes() {
             try {
-                const response = await fetch("/api/recipes");
+                const response = await fetch(`${baseUrl}/recipes`);
                 const data: IRecipe[] = await response.json();
                 setRecipes(data.sort(() => 0.5 - Math.random()).slice(0, 4));
             } catch (error) {
