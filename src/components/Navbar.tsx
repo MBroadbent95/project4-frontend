@@ -21,8 +21,7 @@ declare global {
 }
 
 function Navbar({ user, setUser }: NavbarProps) {
-    // const [isMenuOpen, setIsMenuOpen] = useState(false);
-    // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
     const navigate = useNavigate();
 
     function logout() {
@@ -42,8 +41,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                             alt="Tasteful Trove Logo"
                         />
                         <div
-                        // className={`${isMenuOpen ? "block" : "hidden"
-                        //     } md:block transition duration-300 ease-in-out`}
+
                         >
                             <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 text-lg font-medium">
                                 <li>

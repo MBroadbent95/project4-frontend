@@ -296,7 +296,7 @@ export default function CreateRecipe({ user }: { user: IUser | null }) {
                     </div>
                     <input type="hidden" name="user_id" value={user?.id} />
                     <div className="flex justify-center">
-                        <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-400 focus:outline-none focus:ring focus:border-red-300">
+                        <button className="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-400 focus:outline-none focus:ring focus:border-indigo-300">
                             Submit
                         </button>
                     </div>
