@@ -37,19 +37,10 @@ export default function Signup() {
         } catch (error: any) {
             if (error.response && error.response.data && error.response.data.errors)
                 setErrorData(error.response.data.errors);
-            console.log(error);
+            console.log("here is the error", error);
         }
     }
-    console.log(errorData);
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-    // useEffect(() => {
-    //     if (textAreaRef.current) {
-    //         textAreaRef.current.style.height = "auto";
-    //         textAreaRef.current.style.height =
-    //             textAreaRef.current.scrollHeight + "px";
-    //     }
-    // }, [formData.bio]);
+    console.log("here is the error data", errorData);
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">

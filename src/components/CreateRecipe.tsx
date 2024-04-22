@@ -62,8 +62,9 @@ export default function CreateRecipe({ user }: { user: IUser | null }) {
 
 
     async function handleSubmit(e: SyntheticEvent) {
-        e.preventDefault();
+
         try {
+            e.preventDefault();
             const token = localStorage.getItem("token");
             if (token) {
                 // Include user_id directly in the form data
@@ -71,14 +72,17 @@ export default function CreateRecipe({ user }: { user: IUser | null }) {
                     ...formData,
                     user_id: user?.id
                 };
+                e.preventDefault();
                 const resp = await axios.post(`${baseUrl}/recipes`, formDataWithUserId, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(resp.data);
                 navigate("/recipe");
             }
-        } catch (e: any) {
-            setErrorData(e.response.data.errors);
+        } catch (error: any) {
+            if (error.response && error.response.data && error.response.data.errors)
+                setErrorData(error.response.data.errors);
+            console.log("here is the error", error);
         }
     }
 
@@ -92,6 +96,7 @@ export default function CreateRecipe({ user }: { user: IUser | null }) {
         }
     }, [formData.directions_instructions]);
     console.log(`the current front end user is`, user?.id)
+    console.log("here is the error data", errorData);
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
             <div className="bg-white shadow-md rounded px-8 py-6 w-96">
@@ -285,7 +290,7 @@ export default function CreateRecipe({ user }: { user: IUser | null }) {
                                 className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                             />
                             {errorData.image_url && (
-                                <small className="text-red-500">{errorData.directions_instructions}</small>
+                                <small className="text-red-500">{errorData.image_url}</small>
                             )}
                         </div>
                     </div>
