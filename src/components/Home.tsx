@@ -36,7 +36,7 @@ export default function Home() {
         {
             title: "Share the Sauce",
             description:
-                "Log in to unlock the power of sharing. You could be sharing someones new favourite meal!",
+                "Log in to unlock the power of sharing. You could be sharing someone's new favourite meal!",
         },
         {
             title: "Tuck In and Share your Experience",
