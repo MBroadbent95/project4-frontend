@@ -121,22 +121,41 @@ From the outset i drew up a rough wireframe of what i had in mind via Excalidraw
 
 I wanted this project to be a smooth and polished experience, whilst we do run the risk of the final product being basic and bland without many impressive features, i felt confident that prioritising a clean mvp was a better display of my knowlege and ability than the alternative.
 
------------------------------------------------------------You are Here --------------------------------------------
+
 Build/Code Process
 
-Instructions
+Instructions:
 
-The Build/Code Process will be the longest section of your ReadMe and will be most insightful to the engineers that review them. This is where you will discuss the steps you took to code the project.
+This project needed a good plan if i was to make it through to the end with any app to show for it. As such, my inner project manager took the wheel and i threw together a rough road map for the time ahead of me. Call it a quirk but i love to know where i am in the wider project picture and can't stand now knowing how much needs to be done in X time.
+Please see my roadmap below, i added a couple of tasks as i went but the wider picture remained consistent.
+![Project 4 Roadmap](https://i.imgur.com/JosN2xk.png)
 
-You want to see your ReadMes as a way to walk the engineers through your approach and problem solving from the start of the project through to the end.
+Much like my previous projects, I decided it would be best to start out with a functional back end. Once that is up and tested, we would then proceed to create a front end and carry on.
+My instructors had recently shown me how to test back end functions through automatic testing, this appeared to be a godsend with how much time it would save me testing each individual endpoint on Insomnia.
+Once they were written, the tests returned with positive results, my end points were working as intended.
+Tests are interesting pieces of code to write and execute, I know this is a practice which i will use in the future considering how useful it was.
 
-You'll need to include a minimum of 3-4 code snippets, highlighting code you're particularly proud of and these code snippets will have descriptions on what you did, how and why to set the context of the snippet you include. These explanations are important for the engineers, as they will want to understand what you did and the reasoning behind the steps you took.
+Here are a couple of code snippets testing get and delete respectively, take a look!:
+![Testing get and Delete](https://i.imgur.com/5xzZ1YS.png)
 
-You don't need to document every single thing you coded, but walk them through the key sections of the project build.
+This was my first project using a Python, Flask & PostgreSQL back end, so being relatively new, i lifted a lot of the code from previous coursework and re-applied it to my current project, this worked like a charm and i was able to have my back end up, and tested before the end of the second day, a little behind schedule but the roadmap was optimistic.
 
-For any group project, you will just focus on your contributions.
+At the start of the following week, I was to build my basic front end structure, frameworks and all, and get it talking with my backend so that i can start meaningfully assembling the UI.
+In a previous project, i had started using TailwindCSS for my front end framework. TailwindCSS makes CSS styling so smooth and painless as possible, whilst TailwindCSS can be annoying to install correctly, i'm glad i used it in this project too.
 
-Some people will document the build/code process by discussing the key stages they worked on. Others will do a day by day guide. It’s entirely up to you how you structure this, as long as you discuss all the key things above.
+On the Tuesday i looked into enabling an image upload system so that my users could include a picture of their recipe, personally i rarely cook food from recipes without illustrations so this was essential.
+Unfortunately this research proved to be much longer than anticipated and i couldn't get my head around the technology effectively.
+At this time i was experiencing errors in other areas of the project, namely in the comments and recipe submission/ posting parts. In light of this, I decided it was best to keep the image upload system basic with Imgur links and focus on debugging my other components.
+Moving forward i would be interested in learning the technology for image uploading and display, we all know that Imgur uploading is very clunky and not friendly towards the User Experience.
+
+As i recall, on Wednesday i was experiencing persistent issues with my comments system which required attention. I had noticed that it stopped working once i modified my comments serializer on my back end to include Foreign Keys or include_fk. I needed the code to stay the same if i was to keep my Get_Comment function from breaking. I had a crazy idea to create a new comment serializer with everything the same except the include_fk. To my surprise this worked like a charm and whilst it feels like a hack, like a dumb solution, my instructor assured me that it was perfectly fine and in fact not a hack, but it sure feels like one.
+See my 'hack' code below haha.
+![Super Comment Serializer](https://i.imgur.com/22jV6NY.png) 
+
+
+-----------------------------------------------------------You are Here --------------------------------------------
+
+Moving forward
 
 Challenges
 
