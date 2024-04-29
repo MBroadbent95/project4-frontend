@@ -72,29 +72,56 @@ If you worked in a pair or group, include the names of the people you collaborat
 - The timeframe was 12/4 until the afternoon of 23/4, just under 11 days including weekends.
   I worked solo for this project.
 
-  -----------------------------------------------------------You are Here --------------------------------------------
+Technologies Used:
 
-Technologies Used
+Back end:
+Python
+Flask
+Node
+Axios
+Bcrypt
+Pyjwt
+Pytest
+Psycopg2
+Marshmallow
+Gunicorn
 
-Instructions
+Front end:
+HTML
+TailwindCSS
+Vite
+Axios
+React
+React-dom
+React-router-dom
+React-scripts
+TypeScript
 
-List every technology you used to complete the project. This can be in one long list, or broken down into categories (Back End, Front End, Development Tools).
+Development tools:
+Heroku
+Netlify
+Google Chrome Dev Tools
 
 Brief
-Instructions
+Instructions:
 
-Include the brief set by your instructional team here. This sets the context of the project you were working towards and mimics briefs you will be set later in your future roles.
+- Build a full-stack application by making your own backend and your own front-end.
+- Use a Python Flask API using a Flask REST Framework to serve your data from a Postgres database.
+- Consume your API with a separate front-end built with React.
+- Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models.
+- Implement thoughtful user stories/wireframes that are significant enough to help you know which features are core MVP and which you can cut.
+- Have a visually impressive design to kick your portfolio up a notch and have something to wow future clients & employers. ALLOW time for this.
+- Be deployed online so it's publicly accessible.
 
-This can either be in bullets or in a paragraph.
+Planning:
 
-Planning
+As with all projects, it's well known that how good your project can be is entirely dependent on how much energy you put into planning in the beginning, it was no different here.
+From the outset i drew up a rough wireframe of what i had in mind via Excalidraw, this can be seen below.
+![Project 4 WireFrame](https://i.imgur.com/wfs1EOp.png)
 
-Instructions
+I wanted this project to be a smooth and polished experience, whilst we do run the risk of the final product being basic and bland without many impressive features, i felt confident that prioritising a clean mvp was a better display of my knowlege and ability than the alternative.
 
-The planning stage is important, as all projects in your future roles will have detailed plans before any coding happens. It is a great experience to share with potential engineer employers, as this reflects real engineering team practices.
-
-Start by explaining the initial steps you took in the project.
-
+-----------------------------------------------------------You are Here --------------------------------------------
 Build/Code Process
 
 Instructions
