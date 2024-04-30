@@ -162,8 +162,6 @@ The live URL is ![Tasteful Trove](https://main--tasteful-trove.netlify.app/)
 Feel free to sign up, add a recipe and comments if you wish. I'm rather happy with the deployed result, there are many improvements to be made and a couple of bugs which i will discuss shortly.
 ![Tasteful Trove Webpage](https://i.imgur.com/yxnY0om.png)
 
------------------------------------------------------------You are Here --------------------------------------------
-
 Moving forward
 
 Challenges:
@@ -179,30 +177,18 @@ Wins:
 - Making everything work together was the big victory here. Flask and SQLAlchemy work a bit differently to mongod and express, for example mongod gives you an id automatically but postgreSQL does not, this was initially rather annoying but I like that I was able to figure out a couple of these quirks throughout this project and make them work for what I wanted to achieve.
 - Effective planning was also a considerable win here. Knowing at what stage I am at allows me to assess what to do next and how long I have to spend. Had i not had a roadmap, it is very possible i amy have lost more time to trying to ingegrate image uploads and fall behind schedule.
 
-Key Learnings/Takeaways
+Key Learnings/Takeaways:
+
+This project has helped me develop my confidence with utilising alterantive back end frameworks and doing the necessary tasks to understand and integrate those newer frameworks, like Python & Flask, with older more familiar ones such as React.
+
+I have demonstarated to myself that whilst my final product may not be perfect and could probably use stronger styles and a couple more features, I can certainly deliver a clean and functional full stack project within just over a week without asking for much help and assistance. This I am very proud of and brings me confidence moving into future employment.
+
+Bugs:
 
 Instructions
 
-This section is one of the other most important parts of your ReadMe from an engineers’ perspective and helps to differentiate each of you from your classmates and team members.
-
-Engineers love to understand what you learn from each project and how it has shaped you as an engineer.
-
-See this as your opportunity to show the engineers how your skills grew during each project sprint.
-
-Things you could discuss here:
-
-What Technologies/Tools do you now feel more confident with? Tell them specifically what you learnt about these.
-What engineering processes did you become more comfortable with? Standups? Pair programming? Project management? Tell them what you learnt from these processes?
-
-Bugs
-
-Instructions
-
-If you have any bugs in your project, it’s important that you flag them in your ReadMe. This helps the engineers reviewing your projects to understand that you are aware that there are issues - if you don’t flag these, then they won’t have that visibility that you know these problems are in your code and it can result in them not having a full understanding of your technical knowledge.
-
-In either sentences or bullets, explain what the bugs are.
-
-If you have no bugs, you can leave this section blank.
+- The option to delete your original user posted comment only appears after you navigate to another page and then return.
+- Infrequently, the images of particular recipes will not load correctly.
 
 Future Improvements:
 
