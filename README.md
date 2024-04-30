@@ -166,34 +166,18 @@ Feel free to sign up, add a recipe and comments if you wish. I'm rather happy wi
 
 Moving forward
 
-Challenges
+Challenges:
 
-Instructions
+- A lot of the way Flask works was confusing for me in the beginning, but the more i got my hands on it the more it seemed to make sense.
 
-Challenges are great for showing your learning journey and problem solving, and this is a section that many engineers will check out. Every day of your engineering career you’ll encounter challenges, this is part of your growth and development. It’s the challenges you encounter that helps you become a stronger and more competent engineer.
+- One challenge was in the comment serializer, include_fk, this broke my comment system once I added it, and whilst there most certainly is going to be a more elegant solution, my solution was to just create another serializer for posting comments and keep the old one for get requests. I created the SuperComment serializer which was literally the exact same minus the include_fk and a rename. Just one of those programming quirks which kind of disappoint you when they work.
 
-Here you will detail any particular challenges you encountered as you were coding the project.
+- Model adjustment, despite saying in my mission statement that i was going to include image uploads, I actually forgot to include images in my initial recipe model, this wasn't super impactful over the span of the project but it does mean i need to bust my own ass to plan a bit more.
 
-Questions to answer here:
+Wins:
 
-What technical challenges did you come across?
-Why were these challenges?
-What problem solving did you do to rectify them?
-Team dynamics/ Project management
-Tools/Tech you used
-
-Wins
-
-Instructions
-
-The Wins section is your opportunity to highlight the aspects of your project you are most proud of. See this as your chance to showcase these parts of your projects to the engineers reading your ReadMes.
-
-Things you could discuss here:
-
-Interesting problem solving you did
-Strong sections of code
-Collaboration with other team members
-Visual design of the project
+- Making everything work together was the big victory here. Flask and SQLAlchemy work a bit differently to mongod and express, for example mongod gives you an id automatically but postgreSQL does not, this was initially rather annoying but I like that I was able to figure out a couple of these quirks throughout this project and make them work for what I wanted to achieve.
+- Effective planning was also a considerable win here. Knowing at what stage I am at allows me to assess what to do next and how long I have to spend. Had i not had a roadmap, it is very possible i amy have lost more time to trying to ingegrate image uploads and fall behind schedule.
 
 Key Learnings/Takeaways
 
@@ -220,12 +204,10 @@ In either sentences or bullets, explain what the bugs are.
 
 If you have no bugs, you can leave this section blank.
 
-Future Improvements
+Future Improvements:
 
-Instructions
+- Favourites for users, would be awful nice if I could create a shortlist of recipes i like the look of instead of needing to find them every time, it's fine when there's a small number, but once we get over 30 recipes this will gradually make the user experience suffer.
 
-It’s common to get to the end of your project and have ideas on what you would do if you have more time, as well as how you might improve it.
+- Admin User, An admin user would've been great to keep the page in check, this can be done with minimal adjustments but my roadmap demanded my attention in other areas.
 
-If you do, you should detail this here. It’s great to give that context on potential future improvements, to share your creative or technical ideas with the engineers reading your ReadMes.
-
-In either sentences or bullets, explain what your future improvements would be.
+- User Profile Page, this would have been a large undertaking from scratch and was unlikely to get finished in time if i wanted a smooth mvp, but ideally this feature would include the ability to delete your data, upload a profile picture to add to your comment along with your name, and possibly a dropdown menu to access your favourites.
