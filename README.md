@@ -121,7 +121,6 @@ From the outset i drew up a rough wireframe of what i had in mind via Excalidraw
 
 I wanted this project to be a smooth and polished experience, whilst we do run the risk of the final product being basic and bland without many impressive features, i felt confident that prioritising a clean mvp was a better display of my knowlege and ability than the alternative.
 
-
 Build/Code Process
 
 Instructions:
@@ -150,8 +149,18 @@ Moving forward i would be interested in learning the technology for image upload
 
 As i recall, on Wednesday i was experiencing persistent issues with my comments system which required attention. I had noticed that it stopped working once i modified my comments serializer on my back end to include Foreign Keys or include_fk. I needed the code to stay the same if i was to keep my Get_Comment function from breaking. I had a crazy idea to create a new comment serializer with everything the same except the include_fk. To my surprise this worked like a charm and whilst it feels like a hack, like a dumb solution, my instructor assured me that it was perfectly fine and in fact not a hack, but it sure feels like one.
 See my 'hack' code below haha.
-![Super Comment Serializer](https://i.imgur.com/22jV6NY.png) 
+![Super Comment Serializer](https://i.imgur.com/22jV6NY.png)
 
+Thursday was the day before deployment, so ideally MVP would be achieved in order for a smooth deploy process.
+Since debugging was something I did as I went along, by midday of thursday, MVP was achieved and I could style, test any endpoints I felt anxious about, and finally populate my api with some tasty recipes.
+Data population has always been a tedious part of the development process for me, so it was always gonna take a dedicated period of time to populate correctly. I decided on 8 recipes as a start to populate the page, 2 users, and 2 comments. We could always log in to add more manually, or even re-seed, I did re-seed a couple of times in this project, initially to check if everything was working as it should and then finally to populate.
+
+![Seed](https://i.imgur.com/RWt8jEV.png)
+
+The final couple of days i spent ad-hoc debugging and placing the finishing styles onto my front end.
+The live URL is ![Tasteful Trove](https://main--tasteful-trove.netlify.app/)
+Feel free to sign up, add a recipe and comments if you wish. I'm rather happy with the deployed result, there are many improvements to be made and a couple of bugs which i will discuss shortly.
+![Tasteful Trove Webpage](https://i.imgur.com/yxnY0om.png)
 
 -----------------------------------------------------------You are Here --------------------------------------------
 
