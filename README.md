@@ -1,10 +1,4 @@
-ReadMe Sections
-
-Description
-
-Instructions
-
-Here, give a short description of the project. It can be a couple of sentences where you discuss the point in time during the course that you completed it, the topic of the project and potentially the tech stack.
+ReadMe
 
 - This was my final project to bring together most of the skills i'd learnt over the course of my bootcamp.
   I chose to work alone as this enabled this work to be fully my own and to display my understanding of the tech stack involved, it's also nice to be able to debug on your own and build confidence in yourself.
@@ -12,10 +6,6 @@ Here, give a short description of the project. It can be a couple of sentences w
   My project idea I settled on was to build a Recipe Sharing platform where users can browse, search, and share recipes. Users can create profiles, upload recipes with images, categorise recipes by cuisine or meal type, and leave reviews. Implement features like user authentication, image uploading, and search functionality.
 
 Deployment link
-
-Instructions
-
-Here include the information on where the deployed project can be found. If login details are needed to access the full project, make sure you include them.
 
 - Here is the deployment link to my project - Tasteful Trove
   [Link](https://main--tasteful-trove.netlify.app/)
