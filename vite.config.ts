@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'postgresql://recipedb_lrqc_user:jx4mYbhpVgNV7xnpMzJ4rCkBhhUghLVm@dpg-cvda56an91rc73deiseg-a.frankfurt-postgres.render.com/recipedb_lrqc',
+        target: 'https://project4-backend-7suh.onrender.com',
         changeOrigin: true
       },
     }
