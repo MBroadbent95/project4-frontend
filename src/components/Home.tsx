@@ -8,6 +8,7 @@ import { baseUrl } from "../config"
 export default function Home() {
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
     const [current, setCurrent] = useState(0);
+    console.log('Base URL:', baseUrl);
 
     useEffect(() => {
         async function fetchRecipes() {
